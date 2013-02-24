@@ -1,4 +1,4 @@
-class Representative < ActiveRecord::Base
+class Representative < User
   extend FriendlyId
 
   include Hdo::Model::HasFallbackImage

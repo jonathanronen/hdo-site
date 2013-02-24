@@ -4,7 +4,7 @@ class UserPolicy
   end
 
   def create?
-    @user.superadmin?
+    @user.is_a? HdoUser && @user.superadmin?
   end
 
   alias_method :edit?,    :create?

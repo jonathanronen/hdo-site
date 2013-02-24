@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223142146) do
+ActiveRecord::Schema.define(:version => 20130224141747) do
 
   create_table "answers", :force => true do |t|
     t.text     "body",                                     :null => false
@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(:version => 20130223142146) do
   end
 
   add_index "governing_periods", ["party_id"], :name => "index_governing_periods_on_party_id"
+
+  create_table "hdo_users", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "issues", :force => true do |t|
     t.string   "title"
@@ -235,26 +240,6 @@ ActiveRecord::Schema.define(:version => 20130223142146) do
     t.datetime "updated_at",                        :null => false
   end
 
-  create_table "representatives", :force => true do |t|
-    t.string   "external_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "district_id"
-    t.datetime "date_of_birth"
-    t.datetime "date_of_death"
-    t.string   "slug"
-    t.string   "image_uid"
-    t.string   "image_name"
-    t.string   "twitter_id"
-    t.string   "email"
-  end
-
-  add_index "representatives", ["district_id"], :name => "index_representatives_on_district_id"
-  add_index "representatives", ["last_name"], :name => "index_representatives_on_last_name"
-  add_index "representatives", ["slug"], :name => "index_representatives_on_slug", :unique => true
-
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -287,6 +272,17 @@ ActiveRecord::Schema.define(:version => 20130223142146) do
     t.datetime "updated_at",                                  :null => false
     t.string   "name"
     t.string   "role",                   :default => "admin", :null => false
+    t.string   "type"
+    t.string   "external_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "district_id"
+    t.datetime "date_of_birth"
+    t.datetime "date_of_death"
+    t.string   "slug"
+    t.string   "image_uid"
+    t.string   "image_name"
+    t.string   "twitter_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
