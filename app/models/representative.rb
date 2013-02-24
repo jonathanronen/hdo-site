@@ -1,5 +1,4 @@
 class Representative < User
-  extend FriendlyId
 
   include Hdo::Model::HasFallbackImage
 
@@ -45,8 +44,6 @@ class Representative < User
   validates :external_id, presence: true, uniqueness: true
   validates :email,       allow_nil: true, uniqueness: true, email: true
   validates :twitter_id,  allow_nil: true, uniqueness: true, format: /^[^@]/
-
-  friendly_id :external_id, use: :slugged
 
   image_accessor :image
 
